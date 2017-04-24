@@ -2,6 +2,7 @@ package com.vengalrao.android.collegestudentregistration;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -52,7 +53,7 @@ public class StudentAdapter extends RecyclerView.Adapter<StudentAdapter.StudentA
     }
 
     public interface ListItemClickListener{
-        void onListItemClickListener(int clickedPosition,TextView name);
+        void onListItemClickListener(int clickedPosition,View view);
     }
 
     class StudentAdapterViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
@@ -62,11 +63,13 @@ public class StudentAdapter extends RecyclerView.Adapter<StudentAdapter.StudentA
             super(view);
             name=(TextView)view.findViewById(R.id.student_name);
             dept=(TextView)view.findViewById(R.id.student_dept);
+            view.setOnClickListener(this);
         }
         @Override
         public void onClick(View v) {
+            Log.v("xxxxxxx",v.getTag().toString());
             int clickedPosition=getAdapterPosition();
-            mListItemClickListener.onListItemClickListener(clickedPosition,name);
+            mListItemClickListener.onListItemClickListener(clickedPosition,v);
         }
     }
 

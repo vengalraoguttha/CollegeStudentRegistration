@@ -16,6 +16,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".DetailActivity"></activity>
+        <provider
+            android:exported="true"
+            android:authorities="com.vengalrao.android.collegestudentregistration"
+            android:name=".Data.DataProvider"/>
     </application>
 
 </manifest>
