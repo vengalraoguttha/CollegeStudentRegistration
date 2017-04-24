@@ -72,7 +72,9 @@ public class RegistrationDialog extends DialogFragment {
         Uri uri=getActivity().getContentResolver().insert(DataContract.Student.CONTENT_STUDENT_URI,contentValues);
         getData();
         StudentAdapter adapter=new StudentAdapter(getActivity(),(MainActivity)getActivity());
+        getActivity().findViewById(R.id.error_view).setVisibility(View.GONE);
         RecyclerView recyclerView=(RecyclerView) getActivity().findViewById(R.id.students_view);
+        recyclerView.setVisibility(View.VISIBLE);
         recyclerView.setAdapter(adapter);
         adapter.setData(students);
         dismissAllowingStateLoss();

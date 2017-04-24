@@ -40,7 +40,8 @@ public class MainActivity extends AppCompatActivity implements StudentAdapter.Li
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setAdapter(adapter);
         getData();
-        if(students!=null){
+        Log.v("xxxx",students.length+"");
+        if(students!=null&&students.length!=0){
             adapter.setData(students);
             mTextView.setVisibility(View.GONE);
             mRecyclerView.setVisibility(View.VISIBLE);
@@ -84,16 +85,9 @@ public class MainActivity extends AppCompatActivity implements StudentAdapter.Li
 
     @Override
     public void onListItemClickListener(int clickedPosition, View view) {
-        Log.v("xxxxx",view.getId()+" came");
-        if(view.getId()==R.id.delete){
-            Uri uri= DataContract.Student.CONTENT_STUDENT_URI.buildUpon().appendPath(students[clickedPosition].getStudentName()).build();
-            int x=getContentResolver().delete(uri,null,null);
-            getData();
-            adapter.setData(students);
-        }else{
+        getData();
             Intent intent=new Intent(MainActivity.this,DetailActivity.class);
             intent.putExtra("data",students[clickedPosition]);
             startActivity(intent);
-        }
     }
 }
