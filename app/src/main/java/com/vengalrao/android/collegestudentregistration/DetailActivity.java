@@ -43,8 +43,8 @@ public class DetailActivity extends AppCompatActivity {
                 Uri uri= DataContract.Student.CONTENT_STUDENT_URI.buildUpon().appendPath(s.getStudentName()).build();
                 int x=getContentResolver().delete(uri,null,null);
                 Intent intent1=new Intent(DetailActivity.this,MainActivity.class);
+                intent1.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent1);
-                finish();
             }
         });
     }
